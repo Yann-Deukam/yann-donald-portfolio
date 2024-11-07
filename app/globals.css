@@ -8,3 +8,7 @@ body {
   /* font-family: "Spline Sans Mono", monospace; */
   background-color: #fff9e3;
 }
+
+.typewriter {
+  font-family: "Spline Sans Mono", monospace;
+}
