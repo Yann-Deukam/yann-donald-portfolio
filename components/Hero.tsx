@@ -69,7 +69,9 @@ export default function Hero() {
         animate={{ opacity: 1, y: 0 }}
       >
         <span className="">Hello, I&apos;m Yann.</span> I&apos;m a{" "}
-        <span className="font-bold typewriter text-violet-700">{text}</span>
+        <span className="font-bold typewriter text-violet-700 dark:text-violet-400">
+          {text}
+        </span>
         <span>
           <Cursor cursorStyle="_" />{" "}
         </span>
