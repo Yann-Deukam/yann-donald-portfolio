@@ -13,8 +13,8 @@ export default function Navbar() {
   return (
     <header className="z-[999] relative">
       <motion.div
-        className="fixed top-0 left-1/2 h-[4.5rem] w-full rounded-none border border-white border-opacity-40 bg-white bg-opacity-60 shadow-lg shadow-black/5 backdrop-blur-md
-        sm:top-10 sm:h-[2.75rem] sm:w-[36rem] sm:rounded-full
+        className="fixed top-0 left-1/2 h-[5rem] w-full rounded-none border border-white border-opacity-40 bg-white bg-opacity-60 shadow-lg shadow-black/5 backdrop-blur-md
+        sm:top-10 sm:h-[2.75rem] sm:w-[36rem] sm:rounded-xl
       "
         initial={{ y: -100, x: "-50%", opacity: 0 }}
         animate={{ y: 0, x: "-50%", opacity: 1 }}
@@ -46,7 +46,7 @@ export default function Navbar() {
 
                 {link.name === activeSection && (
                   <motion.span
-                    className="bg-gray-100 rounded-full absolute inset-0 -z-10 dark:bg-gray-800"
+                    className="bg-gray-100 rounded-lg absolute inset-0 -z-10 dark:bg-gray-800"
                     layoutId="activeSection"
                     transition={{
                       type: "spring",

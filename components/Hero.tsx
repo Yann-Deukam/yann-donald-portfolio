@@ -1,12 +1,13 @@
 "use client";
 
+import { useActiveSectionContext } from "@/context/active-section-context";
+import { useSectionInView } from "@/lib/hooks";
 import { motion } from "framer-motion";
 import {
   ArrowDownToLine,
-  ArrowRight,
-  Download,
   Dribbble,
   Github,
+  Instagram,
   Linkedin,
   MoveDownRight,
 } from "lucide-react";
@@ -16,14 +17,20 @@ import React from "react";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
 
 export default function Hero() {
+  const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
   const [text] = useTypewriter({
     words: ["Developer", "Designer", "Engineer"],
     loop: true,
     typeSpeed: 120,
     deleteSpeed: 80,
   });
+  const { ref } = useSectionInView("Home", 0.5);
   return (
-    <section className="mb-28 max-w-[50rem] text-center sm:mb-0">
+    <section
+      ref={ref}
+      id="home"
+      className="mb-28 max-w-[50rem] text-center sm:mb-0 scroll-mt-[10rem]"
+    >
       <div className="flex items-center justify-center">
         <div className="relative">
           <motion.div
@@ -82,6 +89,10 @@ export default function Hero() {
         <Link
           href="#contact"
           className="bg-violet-800 hover:bg-violet-900 transition-all ease-in-out text-white px-7 py-3 flex items-center gap-2 rounded-md shadow-lg"
+          onClick={() => {
+            setActiveSection("Contact");
+            setTimeOfLastClick(Date.now());
+          }}
         >
           Contact me
           <span>
@@ -99,19 +110,40 @@ export default function Hero() {
           </span>
         </a>
         <div className="flex flex-row gap-4">
-          <a className="bg-gray-50 p-3 flex items-center gap-2 rounded-md shadow-lg hover:bg-white transition-all ease-in-out cursor-pointer">
-            <span>
-              <Linkedin />
+          <a
+            className="bg-gray-50 p-3 flex items-center gap-2 rounded-md shadow-lg hover:bg-white transition-all ease-in-out cursor-pointer"
+            href="https://Linkedin.com/"
+            target="_blank"
+          >
+            <span className="text-blue-800">
+              <Linkedin fill="#1e40af" />
             </span>
           </a>
-          <a className="bg-gray-50 p-3 flex items-center gap-2 rounded-md shadow-lg hover:bg-white transition-all ease-in-out cursor-pointer">
-            <span>
+          <a
+            className="bg-gray-50 p-3 flex items-center gap-2 rounded-md shadow-lg hover:bg-white transition-all ease-in-out cursor-pointer"
+            href="https://dribbble.com/"
+            target="_blank"
+          >
+            <span className="text-pink-500">
               <Dribbble />
             </span>
           </a>
-          <a className="bg-gray-50 p-3 flex items-center gap-2 rounded-md shadow-lg hover:bg-white transition-all ease-in-out cursor-pointer">
+          <a
+            className="bg-gray-50 p-3 flex items-center gap-2 rounded-md shadow-lg hover:bg-white transition-all ease-in-out cursor-pointer"
+            href="https://Github.com/"
+            target="_blank"
+          >
             <span>
               <Github />
+            </span>
+          </a>
+          <a
+            className="bg-gray-50 p-3 flex items-center gap-2 rounded-md shadow-lg hover:bg-white transition-all ease-in-out cursor-pointer"
+            href="https://Instagram.com/"
+            target="_blank"
+          >
+            <span className="text-pink-600">
+              <Instagram />
             </span>
           </a>
         </div>
